@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "719385582416",
+    "project_id": "task-notification-f4159",
+    "storage_bucket": "task-notification-f4159.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719385582416:android:d4734aa737ccf6ca73aa55",
+        "android_client_info": {
+          "package_name": "br.com.adtimbo.task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719385582416-k0ko8l7jam42o5qgt2lkn9f7n244r4dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdgAo5aM9-8efyKKZiuNOznEpWSJUi3zY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719385582416-k0ko8l7jam42o5qgt2lkn9f7n244r4dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
