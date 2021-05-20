@@ -52,8 +52,8 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child: this.isLoading
               ? LoadScreen()
-              : Column(
-                  mainAxisSize: MainAxisSize.max,
+              : ListView(
+                  //mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(
@@ -62,9 +62,9 @@ class _LoginPageState extends State<LoginPage> {
                         left: 30,
                         right: 30,
                       ),
-                      child: new Image(
-                        fit: BoxFit.fill,
+                      child: Image(
                         image: new AssetImage('assets/images/banner.png'),
+                        fit: BoxFit.fitWidth,
                       ),
                     ),
                     Container(
