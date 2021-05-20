@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +16,67 @@ class LoadScreen extends StatelessWidget {
           CircularProgressIndicator(),
           Text('Loading'),
         ],
+      ),
+    );
+  }
+}
+
+class LoadScreenScaffold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: new GlobalKey<ScaffoldState>(),
+      body: SingleChildScrollView(
+        child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height >= 775.0
+                ? MediaQuery.of(context).size.height
+                : 775.0,
+            decoration: new BoxDecoration(
+              gradient: new LinearGradient(
+                colors: [
+                  Colors.cyan[800],
+                  Colors.cyan[400],
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(1.0, 1.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp,
+              ),
+            ),
+            child: LoadScreen()),
+      ),
+    );
+  }
+}
+
+class LoadScreenApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Task',
+      home: Scaffold(
+        key: new GlobalKey<ScaffoldState>(),
+        body: SingleChildScrollView(
+          child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height >= 775.0
+                  ? MediaQuery.of(context).size.height
+                  : 775.0,
+              decoration: new BoxDecoration(
+                gradient: new LinearGradient(
+                  colors: [
+                    Colors.cyan[800],
+                    Colors.cyan[400],
+                  ],
+                  begin: const FractionalOffset(0.0, 0.0),
+                  end: const FractionalOffset(1.0, 1.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.clamp,
+                ),
+              ),
+              child: LoadScreen()),
+        ),
       ),
     );
   }

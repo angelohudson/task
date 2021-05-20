@@ -166,9 +166,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   color: Colors.red,
                 ),
                 onTap: () {
-                  Navigator.pop(
-                    context,
-                  );
+                  Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
                 },
               ),
               SizedBox(
