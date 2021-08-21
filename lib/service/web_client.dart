@@ -7,6 +7,7 @@ import 'http/connection.dart';
 
 abstract class WebClient<T> {
   final TokenService _token = TokenService();
+  Future<T> findOne(int id);
   Future<List<T>> findAll();
   Future<dynamic> save(T user);
   Future<dynamic> update(T user);
