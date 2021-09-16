@@ -24,19 +24,12 @@ class _ItemScreenState extends State<ItemScreen> {
     return Dismissible(
       key: Key(this.widget._task.id.toString()),
       child: new InkWell(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => EventDetailsView(this.widget._task.event.id),
-          ),
+        onTap: () => showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return EventDetailsView(this.widget._task.event.id);
+          },
         ),
-        //showCustomDialog(
-        //  context,
-        //  this.widget._task.taskname,
-        //  this.widget._task.describe,
-        //  this.widget._task.status,
-        //  this._onConfirm,
-        //),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Container(

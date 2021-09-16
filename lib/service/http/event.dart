@@ -7,6 +7,20 @@ import 'package:http/http.dart';
 class EventService extends WebClient {
   final String _resource = "evento";
 
+  Future<bool> addComment(int eventId, String newComment) async {
+    try {
+      Response response = await super.updateEntity(
+        jsonEncode({"comentario": newComment}),
+        path: "$_resource/$eventId/comentario",
+      );
+      return response.statusCode == 200;
+    } catch (error, stacktrace) {
+      print(error);
+      print(stacktrace);
+      return false;
+    }
+  }
+
   @override
   Future<Event> findOne(int id) async {
     try {

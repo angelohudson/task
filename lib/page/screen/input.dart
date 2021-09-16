@@ -15,6 +15,7 @@ class TextInputCamp extends StatelessWidget {
   final size;
   final bool enabled;
   final String readeOnly;
+  final Function onEditingComplete;
 
   TextInputCamp(
     this.controller,
@@ -28,6 +29,7 @@ class TextInputCamp extends StatelessWidget {
     this.val,
     this.enabled: true,
     this.readeOnly: '',
+    this.onEditingComplete,
   });
 
   @override
@@ -41,6 +43,7 @@ class TextInputCamp extends StatelessWidget {
         keyboardType: this.type,
         textInputAction: TextInputAction.done,
         validator: this.validate,
+        onEditingComplete: this.onEditingComplete,
         decoration: InputDecoration(
           labelText: text,
           icon: icon,

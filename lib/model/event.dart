@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
 import 'package:task/model/task.dart';
+import 'package:task/page/list_task/event_details/event_details_controller.dart';
 
 class Event {
   final int id;
@@ -9,6 +10,7 @@ class Event {
   final DateTime tasktime;
   final Color status;
   List<Task> tasks;
+  List<Comment> comments;
 
   Event(
     this.id,
@@ -17,12 +19,19 @@ class Event {
     this.tasktime,
     this.status,
     this.describe,
-    tasks,
+    this.tasks,
+    this.comments,
   );
 
   static Event fromJson(Map<String, dynamic> json) {
-    var tasks = json.containsKey('tasksDto') && json['tasksDto'] != null
-        ? json['tasksDto'].map((task) => {Task.fromJson(task)}).toList()
+    List<Task> tasks = json.containsKey('tasksDto') && json['tasksDto'] != null
+        ? json['tasksDto'].map<Task>((task) {
+            return Task.fromJson(task);
+          }).toList()
+        : [];
+    List<Comment> comments = json.containsKey('comentarios') &&
+            json['comentarios'] != null
+        ? json['comentarios'].map<Comment>((c) => Comment.fromJson(c)).toList()
         : [];
     return Event(
       json['id'],
@@ -32,11 +41,22 @@ class Event {
       Color(int.parse(json['ministerio']['cor'])),
       json['descricao'],
       tasks,
+      comments,
     );
   }
 
   @override
   String toString() {
     return 'Event(id: $id, describe: $describe, tasktime: $tasktime, status: $status, tasks: $tasks)';
+  }
+}
+
+class Comment {
+  String memberName;
+  String text;
+  Comment(this.memberName, this.text);
+
+  static Comment fromJson(Map<String, dynamic> json) {
+    return Comment(json['memberName'], json['comentario']);
   }
 }
