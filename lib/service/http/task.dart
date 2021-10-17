@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
 import 'package:task/model/task.dart';
 import 'package:task/service/web_client.dart';
 import 'package:http/http.dart';
@@ -11,6 +12,35 @@ class TaskService extends WebClient {
   Future<List<Task>> findAll() async {
     try {
       Response response = await super.getEntity(path: "$_resource");
+      List<dynamic> body = jsonDecode(response.body);
+
+      List<Task> tasks = body.map((taskJson) {
+        return Task.fromJson(taskJson);
+      }).toList();
+
+      return tasks;
+    } catch (error, stacktrace) {
+      print(error);
+      print(stacktrace);
+      return null;
+    }
+  }
+
+  Future<List<Task>> findByPeriod(
+    DateTime initialDate,
+    DateTime finalDate,
+  ) async {
+    String initialDateStr =
+        DateFormat("yyyy-MM-dd'T'hh:mm:ss").format(initialDate);
+    String finalDateStr = DateFormat("yyyy-MM-dd'T'hh:mm:ss").format(finalDate);
+    try {
+      Response response = await super.getEntity(
+        path: "$_resource/by-periodo",
+        queryParameters: {
+          "dataFim": finalDateStr,
+          "dataInicio": initialDateStr
+        },
+      );
       List<dynamic> body = jsonDecode(response.body);
 
       List<Task> tasks = body.map((taskJson) {

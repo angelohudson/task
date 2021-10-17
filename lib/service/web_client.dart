@@ -13,8 +13,8 @@ abstract class WebClient<T> {
   Future<dynamic> update(T user);
   Future<bool> delete(int id);
 
-  Future<Response> getEntity({String path = ""}) async {
-    return client.get(Uri.http(baseUrl, path), headers: {
+  Future<Response> getEntity({String path = "", Map<String, dynamic> queryParameters}) async {
+    return client.get(Uri.http(baseUrl, path, queryParameters), headers: {
       'Authorization': (await (this)._token.getBase64()),
       'Content-type': 'application/json',
     }).timeout(Duration(seconds: 15));

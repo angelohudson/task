@@ -1,6 +1,6 @@
 import 'package:task/model/event.dart';
 
-enum TaskStatus { CONFIRMADO, DELETADO, DEFAULT }
+enum TaskStatus { CONFIRMADO, DELETADO, DEFAULT, CONCLUIDA }
 
 class Task {
   final int id;

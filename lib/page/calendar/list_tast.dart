@@ -53,7 +53,7 @@ class _TasksCalendarState extends State<TasksCalendar>
   }
 
   void _resetBaseDate(DateTime firstDayDateTime, DateTime lastDayDateTime) {
-    this._webClient.findAll().then(
+    this._webClient.findByPeriod(firstDayDateTime, lastDayDateTime).then(
           (tasksResponse) => {
             setState(() {
               tasksResponse.forEach((val) {
