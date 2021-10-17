@@ -57,7 +57,8 @@ class _TasksCalendarState extends State<TasksCalendar>
           (tasksResponse) => {
             setState(() {
               tasksResponse.forEach((val) {
-                String date = DateFormat("yyyy-MM-dd").format(val.tasktime);
+                String date =
+                    DateFormat("yyyy-MM-dd").format(val.event.tasktime);
                 if (this._events[date] == null) {
                   _events[date] = Map();
                 }

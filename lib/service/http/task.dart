@@ -54,6 +54,11 @@ class TaskService extends WebClient {
   }
 
   @override
+  Future<Task> findOne(int id) {
+    throw UnimplementedError();
+  }
+
+  @override
   Future update(json) {
     throw UnimplementedError();
   }

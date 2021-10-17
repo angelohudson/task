@@ -166,9 +166,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   color: Colors.red,
                 ),
                 onTap: () {
-                  Navigator.pop(
-                    context,
-                  );
+                  this._tokenService.removeToken();
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, "/login", (route) => false);
                 },
               ),
               SizedBox(

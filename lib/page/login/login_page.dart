@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task/page/login/error_message.dart';
-import 'package:task/page/navegation/navigation_home_screen.dart';
 import 'package:task/page/screen/load.dart';
 import 'package:task/service/http/token.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key}) : super(key: key);
-
   @override
   _LoginPageState createState() => new _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool isLoading = true;
+  bool isLoading = false;
 
   final TokenService _tokenService = TokenService();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -56,8 +52,8 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child: this.isLoading
               ? LoadScreen()
-              : Column(
-                  mainAxisSize: MainAxisSize.max,
+              : ListView(
+                  //mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(
@@ -66,9 +62,9 @@ class _LoginPageState extends State<LoginPage> {
                         left: 30,
                         right: 30,
                       ),
-                      child: new Image(
-                        fit: BoxFit.fill,
+                      child: Image(
                         image: new AssetImage('assets/images/banner.png'),
+                        fit: BoxFit.fitWidth,
                       ),
                     ),
                     Container(
@@ -90,16 +86,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-
-    SharedPreferences.getInstance().then((value) {
-      if (value.getString("email") != null) {
-        this.processLogin(
-            value.getString("email"), value.getString("password"));
-      } else {
-        _setLoad(false);
-      }
-    });
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -278,8 +264,7 @@ class _LoginPageState extends State<LoginPage> {
     this._tokenService.login(email, password).then((value) {
       if (value != null) {
         this._tokenService.getMe().then((me) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => NavigationHomeScreen()));
+          Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
           this._setLoad(false);
         });
       } else {

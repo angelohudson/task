@@ -1,24 +1,20 @@
-import 'dart:ui';
-import 'package:intl/intl.dart';
-import 'package:flutter/material.dart';
+import 'package:task/model/event.dart';
 
 enum TaskStatus { CONFIRMADO, DELETADO, DEFAULT }
 
 class Task {
   final int id;
-  final String taskname, subtask, describe;
-  final DateTime tasktime;
+  Event event;
   TaskStatus taskStatus;
-  final Color status;
+  String memberName;
+  String function;
 
   Task(
     this.id,
-    this.taskname,
-    this.subtask,
-    this.tasktime,
-    this.status,
-    this.describe, {
+    this.event, {
     this.taskStatus,
+    this.memberName,
+    this.function,
   });
 
   static Task fromJson(Map<String, dynamic> json) {
@@ -28,25 +24,15 @@ class Task {
         (t) => t.toString() == "TaskStatus." + json['status'].toString(),
       );
     }
+    var event =
+        json.containsKey('evento') ? Event.fromJson(json['evento']) : null;
     var task = Task(
       json['id'],
-      json['titulo'],
-      json['subtitulo'],
-      DateFormat("yyyy-MM-dd'T'hh:mm:ss").parse(json['data']),
-      Color(int.parse(json['ministerio']['cor'])),
-      json['descricao'],
+      event,
       taskStatus: taskStatus,
+      memberName: json['membro']['nome'],
+      function: json['funcaoEscala'],
     );
     return task;
-  }
-
-  dynamic toJson() {
-    return {
-      'id': this.id,
-      'titulo': this.taskname,
-      'subtitulo': this.subtask,
-      'data': DateFormat("yyyy-MM-dd'T'hh:mm:ss").format(tasktime),
-      'descricao': this.describe,
-    };
   }
 }

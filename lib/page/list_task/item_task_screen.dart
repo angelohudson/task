@@ -1,3 +1,4 @@
+import 'package:task/page/list_task/event_details/event_details_view.dart';
 import 'package:task/page/list_task/input_justificativa.dart';
 import 'package:task/service/http/task.dart';
 import 'package:intl/intl.dart';
@@ -23,19 +24,20 @@ class _ItemScreenState extends State<ItemScreen> {
     return Dismissible(
       key: Key(this.widget._task.id.toString()),
       child: new InkWell(
-        onTap: () => showCustomDialog(
-          context,
-          this.widget._task.taskname,
-          this.widget._task.describe,
-          this.widget._task.status,
-          this._onConfirm,
+        onTap: () => showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return EventDetailsView(this.widget._task.event.id);
+          },
         ),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Container(
             height: 90.0,
             child: Material(
-              color: this.widget._task.taskStatus == TaskStatus.CONFIRMADO ? Colors.indigo[50] : Colors.white,
+              color: this.widget._task.taskStatus == TaskStatus.CONFIRMADO
+                  ? Colors.indigo[50]
+                  : Colors.white,
               elevation: 14.0,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(2),
@@ -48,7 +50,7 @@ class _ItemScreenState extends State<ItemScreen> {
                     Container(
                       height: 90.0,
                       width: 5.0,
-                      color: this.widget._task.status,
+                      color: this.widget._task.event.status,
                     ),
                     Expanded(
                       child: Padding(
@@ -60,7 +62,7 @@ class _ItemScreenState extends State<ItemScreen> {
                               alignment: Alignment.topLeft,
                               child: Container(
                                 child: Text(
-                                  this.widget._task.taskname,
+                                  this.widget._task.event.taskname,
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     color: Colors.black,
@@ -73,10 +75,11 @@ class _ItemScreenState extends State<ItemScreen> {
                               alignment: Alignment.topLeft,
                               child: Container(
                                 child: Text(
-                                  this.widget._task.subtask,
+                                  this.widget._task.event.subtask,
                                   style: TextStyle(
                                     fontSize: 14.0,
-                                    color: this.widget._task.taskStatus == TaskStatus.CONFIRMADO
+                                    color: this.widget._task.taskStatus ==
+                                            TaskStatus.CONFIRMADO
                                         ? Colors.black
                                         : Colors.blue,
                                   ),
@@ -88,7 +91,7 @@ class _ItemScreenState extends State<ItemScreen> {
                               child: Container(
                                 child: Text(
                                   DateFormat("dd/MM hh:mm a")
-                                      .format(this.widget._task.tasktime),
+                                      .format(this.widget._task.event.tasktime),
                                   style: TextStyle(
                                     fontSize: 14.0,
                                     color: Colors.black45,
@@ -103,7 +106,8 @@ class _ItemScreenState extends State<ItemScreen> {
                     Transform.scale(
                       scale: 1.3,
                       child: Checkbox(
-                        value: this.widget._task.taskStatus == TaskStatus.CONFIRMADO,
+                        value: this.widget._task.taskStatus ==
+                            TaskStatus.CONFIRMADO,
                         onChanged: (val) {
                           this._onConfirm();
                         },
