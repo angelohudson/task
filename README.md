@@ -1,6 +1,6 @@
 # task
 
-A new Flutter project.
+Essa aplicação mobile trás a visualização das escalas e eventos referentes a igreja a qual está associada.
 
 ## Getting Started
 
