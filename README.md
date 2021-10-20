@@ -14,7 +14,7 @@ Ao logar você poderá visualizar as tarefas direcionadas a você através do no
 ![Detalhes da tarefa](https://user-images.githubusercontent.com/74786258/138012136-6c9909f6-5946-49e1-b57c-6d0f70c36b9c.jpeg)
 
 # Menu
-![Menu](https:/![calendário](https://user-images.githubusercontent.com/74786258/138012135-1bffb256-d5d9-41e4-ade2-616f3e01f0b7.jpeg)
+![Menu](https://user-images.githubusercontent.com/74786258/138012394-4948fc28-a2ac-4487-a959-219bc40c4424.jpeg)
 
 # Calendário
 ![Calendário](https://user-images.githubusercontent.com/74786258/138012200-33b22481-e5f9-4e8f-8a73-28083ee61123.jpeg)
