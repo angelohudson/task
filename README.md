@@ -2,6 +2,8 @@
 
 Essa aplicação mobile trás a visualização das escalas e eventos referentes a igreja a qual está associada.
 
+Ao logar você poderá visualizar as tarefas direcionadas a você através do nosso sistema integrado.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
