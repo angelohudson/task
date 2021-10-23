@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task/model/event.dart';
@@ -20,11 +21,22 @@ class _EventDetailsViewState extends State<EventDetailsView> {
       new EventDetailsController(new EventService());
 
   Future<Event> future;
+  Event event;
 
   @override
   void initState() {
     super.initState();
     this.future = _controller.findEventById(this.widget._id);
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      if (message.data['topico'] == 'novoComentario' && message.data['eventId'] == this.widget._id.toString()) {
+        setState(() {
+          this.event.comments.add(new Comment(
+                message.data['membroNome'],
+                message.notification.body,
+              ));
+        });
+      }
+    });
   }
 
   Widget build(BuildContext context) {
@@ -32,7 +44,7 @@ class _EventDetailsViewState extends State<EventDetailsView> {
       future: this.future,
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          Event event = snapshot.data;
+          this.event = snapshot.data;
           return AlertDialog(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),

@@ -20,8 +20,11 @@ class _ListPageState extends State<ListPage> {
   void initState() {
     super.initState();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      setState(() => _isLoad = true);
-      processDatas();
+      print(message.data['topico']);
+      if (message.data['topico'] == 'novaTarefa') {
+        setState(() => _isLoad = true);
+        processDatas();
+      }
     });
     processDatas();
   }
