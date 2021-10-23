@@ -6,4 +6,4 @@ final Client client = HttpClientWithInterceptor.build(
   interceptors: [LoggingInterceptor()],
 );
 
-String baseUrl = '192.168.0.112:8888';
+String baseUrl = 'api.adtimbo.com.br:8888';
