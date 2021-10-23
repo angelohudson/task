@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
 import 'package:task/model/task.dart';
-import 'package:task/page/list_task/event_details/event_details_controller.dart';
 
 class Event {
   final int id;
