@@ -131,20 +131,52 @@ class _ItemScreenState extends State<ItemScreen> {
   }
 
   void _onConfirm() {
-    this._taskService.confirmTask(this.widget._task).then((ok) {
-      if (ok) {
-        setState(() {
-          this.widget._task.taskStatus = TaskStatus.CONFIRMADO;
-        });
-      } else {
-        showCustomDialog(
-          context,
-          "Erro ao deletar!",
-          "Verifique sua conexão ou contate ao administrador.",
-          Colors.red,
-          () => print("Confirmado"),
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          // color: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          elevation: 10.0,
+          title: Text(
+            'Está certo disso?',
+            style: TextStyle(fontSize: 18.0, color: Colors.black),
+          ),
+          content: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              child: Text(
+                'Ao confirmar essa atividade não pode-se desfazer da confirmação.\n\n\nSeja, porém, o vosso falar: Sim, sim; Não, não; Mateus 5:37',
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            new TextButton(
+              child: Text("Sim"),
+              onPressed: () {
+                this._taskService.confirmTask(this.widget._task).then((ok) {
+                  if (ok) {
+                    setState(() {
+                      this.widget._task.taskStatus = TaskStatus.CONFIRMADO;
+                    });
+                    Navigator.of(context).pop();
+                  } else {
+                    showCustomDialog(
+                      context,
+                      "Erro ao deletar!",
+                      "Verifique sua conexão ou contate ao administrador.",
+                      Colors.red,
+                      () => print("Confirmado"),
+                    );
+                  }
+                });
+              },
+            ),
+          ],
         );
-      }
-    });
+      },
+    );
   }
 }
