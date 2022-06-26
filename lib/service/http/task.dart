@@ -6,7 +6,7 @@ import 'package:task/service/web_client.dart';
 import 'package:http/http.dart';
 
 class TaskService extends WebClient {
-  final String _resource = "task";
+  final String _resource = "/task-api/task";
 
   @override
   Future<List<Task>> findAll() async {

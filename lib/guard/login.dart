@@ -30,11 +30,8 @@ class LoginGuard extends StatelessWidget {
   Future<bool> verifyAuth() async {
     TokenService service = TokenService();
     SharedPreferences value = await SharedPreferences.getInstance();
-    if (value.getString("email") != null) {
-      List rules = await service.login(
-        value.getString("email"),
-        value.getString("password"),
-      );
+    if (value.getString("token") != null) {
+      List rules = await service.getAuthorities();
       return rules != null;
     }
     return false;

@@ -21,8 +21,6 @@ class TokenService {
       SharedPreferences pref = await SharedPreferences.getInstance();
       pref.setString('token', token);
 
-      this.launchDeviceToken();
-
       return token;
     } catch (e) {
       print(e);
@@ -66,7 +64,8 @@ class TokenService {
   }
 
   Future<List<dynamic>> getAuthorities() async {
-    final dynamic me = await getMe();
+    final dynamic me = getMe();
+
     return me['roles'];
   }
 }

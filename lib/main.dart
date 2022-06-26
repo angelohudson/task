@@ -5,6 +5,7 @@ import 'package:task/guard/login.dart';
 import 'package:task/page/login/login_page.dart';
 import 'package:task/page/navegation/navigation_home_screen.dart';
 import 'package:task/page/screen/load.dart';
+import 'package:task/app/shared/utils/connection.dart';
 import 'package:task/service/notification/firebase_notification.dart';
 
 Future<void> main() async {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
           firebaseMessagingForeground();
           firebaseMessagingBackground();
           return MaterialApp(
+            navigatorKey: navigatorKey,
             debugShowCheckedModeBanner: false,
             title: 'Task',
             theme: ThemeData(

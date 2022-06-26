@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:task/page/navegation/navegation_tamplate.dart';
-import 'package:task/page/theme/app_theme.dart';
+import 'package:task/app/modules/home/home_item_tamplate.dart';
+import 'package:task/app/modules/home/theme/app_theme.dart';
+import 'package:task/app/shared/service/token.dart';
 import 'package:task/app/shared/utils/connection.dart';
-import 'package:task/service/http/token.dart';
 
-class HomeDrawer extends StatefulWidget {
-  const HomeDrawer({
+class SideBarMenu extends StatefulWidget {
+  const SideBarMenu({
     Key key,
     this.screenIndex,
     this.iconAnimationController,
@@ -17,18 +17,18 @@ class HomeDrawer extends StatefulWidget {
   final Function(DrawerIndex) callBackIndex;
 
   @override
-  _HomeDrawerState createState() => _HomeDrawerState();
+  _SideBarMenuState createState() => _SideBarMenuState();
 }
 
-class _HomeDrawerState extends State<HomeDrawer> {
-  List<NavegationItemTamplate> navegationItems;
+class _SideBarMenuState extends State<SideBarMenu> {
+  List<HomeItemTamplate> navegationItems;
   TokenService _tokenService = TokenService();
   NetworkImage _remoteImage;
   String _name = "";
 
   @override
   void initState() {
-    setNavegationItemTamplateArray();
+    setHomeItemTamplateArray();
     this._tokenService.getBearerToken().then((token) {
       this._tokenService.getMe().then((me) {
         setState(() {
@@ -45,14 +45,14 @@ class _HomeDrawerState extends State<HomeDrawer> {
     super.initState();
   }
 
-  void setNavegationItemTamplateArray() {
-    navegationItems = <NavegationItemTamplate>[
-      NavegationItemTamplate(
+  void setHomeItemTamplateArray() {
+    navegationItems = <HomeItemTamplate>[
+      HomeItemTamplate(
         index: DrawerIndex.HOME,
         labelName: 'Atividades',
         icon: Icon(Icons.list_sharp),
       ),
-      NavegationItemTamplate(
+      HomeItemTamplate(
         index: DrawerIndex.CALENDARIO,
         labelName: 'Calendário',
         icon: Icon(Icons.calendar_today),
@@ -182,7 +182,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
     );
   }
 
-  Widget inkwell(NavegationItemTamplate listData) {
+  Widget inkwell(HomeItemTamplate listData) {
     return Material(
       color: Colors.transparent,
       child: InkWell(

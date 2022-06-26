@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -25,12 +25,19 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  # Firebase
   firebase_core: "0.7.0"
   firebase_messaging: "^8.0.0-dev.15"
+  # Storage
   shared_preferences:
+  # Modular
+  flutter_modular:
+  # Http
   http:
   http_interceptor:
+  # Calendar
   table_calendar: ^2.2.2
+  # Style
   font_awesome_flutter: ^8.4.0
   cupertino_icons: ^1.0.2
   mask_text_input_formatter: ^1.0.6
@@ -41,7 +48,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.7.5
 
 flutter_icons:
-  image_path: "assets/images/logo.png" 
+  image_path: "assets/images/logo.png"
   ios: true
   android: true
 
@@ -50,7 +57,6 @@ flutter_icons:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

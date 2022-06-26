@@ -32,12 +32,13 @@ class Event {
             json['comentarios'] != null
         ? json['comentarios'].map<Comment>((c) => Comment.fromJson(c)).toList()
         : [];
+    String cor = json['ministerio']['cor'];
     return Event(
       json['id'],
       json['titulo'],
       json['subtitulo'],
       DateFormat("yyyy-MM-dd'T'hh:mm:ss").parse(json['data']),
-      Color(int.parse(json['ministerio']['cor'])),
+      Color(cor == null ? null : int.parse(cor)),
       json['descricao'],
       tasks,
       comments,

@@ -158,6 +158,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_modular:
+    dependency: "direct main"
+    description:
+      name: flutter_modular
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.3.1"
+  flutter_modular_annotations:
+    dependency: transitive
+    description:
+      name: flutter_modular_annotations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -418,6 +432,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.19"
+  triple:
+    dependency: transitive
+    description:
+      name: triple
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0+1"
   typed_data:
     dependency: transitive
     description:

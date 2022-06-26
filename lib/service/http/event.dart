@@ -5,7 +5,7 @@ import 'package:task/service/web_client.dart';
 import 'package:http/http.dart';
 
 class EventService extends WebClient {
-  final String _resource = "evento";
+  final String _resource = "/task-api/evento";
 
   Future<bool> addComment(int eventId, String newComment) async {
     try {
