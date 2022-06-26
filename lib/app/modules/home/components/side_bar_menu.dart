@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task/app/modules/home/home_item_tamplate.dart';
+import 'package:task/app/modules/home/model/home_item_tamplate.dart';
 import 'package:task/app/modules/home/theme/app_theme.dart';
 import 'package:task/app/shared/service/token.dart';
 import 'package:task/app/shared/utils/connection.dart';

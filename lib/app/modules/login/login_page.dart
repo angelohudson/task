@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:task/page/login/error_message.dart';
-import 'package:task/page/screen/load.dart';
-import 'package:task/service/http/token.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:task/app/modules/login/components/error_message.dart';
+import 'package:task/app/shared/components/load.dart';
+import 'package:task/app/shared/service/token.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           child: this.isLoading
-              ? LoadScreen()
+              ? LoadComponent()
               : ListView(
                   //mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
@@ -264,7 +264,7 @@ class _LoginPageState extends State<LoginPage> {
     this._tokenService.login(email, password).then((value) {
       if (value != null) {
         this._tokenService.getMe().then((me) {
-          Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
           this._setLoad(false);
         });
       } else {

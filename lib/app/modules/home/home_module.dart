@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:task/app/modules/login/login_page.dart';
+import 'package:task/app/modules/home/home_page.dart';
 import 'package:task/app/shared/service/token.dart';
 
 class HomeModule extends Module {
@@ -12,7 +12,7 @@ class HomeModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(
           "/",
-          child: (_, args) => LoginPage(),
+          child: (_, args) => HomePage(),
         )
       ];
 }

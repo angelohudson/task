@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task/app/modules/home/components/side_bar_menu.dart';
-import 'package:task/app/modules/home/home_item_tamplate.dart';
+import 'package:task/app/modules/home/model/home_item_tamplate.dart';
 import 'package:task/app/modules/home/theme/app_theme.dart';
 
 class NavegationScreen extends StatefulWidget {
@@ -114,7 +114,7 @@ class _NavegationScreenState extends State<NavegationScreen>
                     return Transform(
                       transform: Matrix4.translationValues(
                           scrollController.offset, 0.0, 0.0),
-                      child: HomeDrawer(
+                      child: SideBarMenu(
                         screenIndex: widget.screenIndex == null
                             ? DrawerIndex.HOME
                             : widget.screenIndex,

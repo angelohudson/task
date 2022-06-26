@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:task/app/shared/service/firebase_notification.dart';
 import 'package:task/app/shared/utils/connection.dart';
-import 'package:task/service/notification/firebase_notification.dart';
 
 class TokenService {
+  FirebaseService _firebaseService = new FirebaseService();
+
   Future<String> login(String cpf, String password) async {
     try {
       final Response response = await client
@@ -35,7 +37,7 @@ class TokenService {
               'Authorization': (await (this.getBearerToken())),
               'Content-type': 'application/json',
             },
-            body: jsonEncode({'token': (await getToken())}))
+            body: jsonEncode({'token': (await _firebaseService.getToken())}))
         .timeout(Duration(seconds: 60));
     return jsonDecode(response.body);
   }
@@ -48,6 +50,10 @@ class TokenService {
 
   Future<String> getBearerToken() async {
     return "Bearer " + await this._getString('token');
+  }
+
+  Future<bool> hasToken() async {
+    return await this._getString('token') != null;
   }
 
   Future<String> _getString(String key) async {

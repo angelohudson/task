@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:task/app/modules/home/home_item_tamplate.dart';
+import 'package:task/app/modules/home/components/calendar/list_tast.dart';
+import 'package:task/app/modules/home/components/list_task/list_task.dart';
+import 'package:task/app/modules/home/model/home_item_tamplate.dart';
 import 'package:task/app/modules/home/components/navegation_screen.dart';
 import 'package:task/app/modules/home/theme/app_theme.dart';
-import 'package:task/page/calendar/list_tast.dart';
-import 'package:task/page/list_task/list_task.dart';
 
 class HomePage extends StatefulWidget {
   @override
