@@ -17,12 +17,16 @@ class TableSchedule extends StatelessWidget {
         DataColumn(
           label: Text('Membro'),
         ),
+        DataColumn(
+          label: Text('Status'),
+        ),
       ],
       rows: this
           .tasks
           .map((task) => DataRow(cells: [
                 DataCell(Text(task.function == null ? "" : task.function)),
                 DataCell(Text(task.memberName == null ? "" : task.memberName)),
+                DataCell(Text(task.taskStatus == null ? "" : task.taskStatus.toShortString())),
               ]))
           .toList(),
     );

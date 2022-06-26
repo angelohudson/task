@@ -2,6 +2,13 @@ import 'package:task/app/modules/home/model/event.dart';
 
 enum TaskStatus { CONFIRMADO, DELETADO, DEFAULT, CONCLUIDA }
 
+extension ParseToString on TaskStatus {
+  String toShortString() {
+    if (this == TaskStatus.DEFAULT) return "AGUARDANDO CONF.";
+    else return this.toString().split('.').last;
+  }
+}
+
 class Task {
   final int id;
   Event event;
